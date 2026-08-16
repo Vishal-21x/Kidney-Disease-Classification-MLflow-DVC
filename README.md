@@ -211,22 +211,22 @@ All metrics monitored via **MLflow Dashboard** for experiment comparison and ana
 ## 🛠️ Tech Stack & Skills
 
 
-**Machine Learning & Deep Learning**
+**Machine Learning & Deep Learning**  
 Python • TensorFlow • Keras • NumPy • Pandas • Scikit-learn
 
-**ML Operations & Tracking**
+**ML Operations & Tracking**  
 MLflow • DVC
 
-**Web Framework & API**
+**Web Framework & API**  
 Flask • Jupyter
 
-**DevOps & Cloud**
+**DevOps & Cloud**  
 Docker • GitHub Actions • AWS • AWS EC2 • AWS ECR
 
-**Version Control & Collaboration**
+**Version Control & Collaboration**  
 Git • GitHub
 
-**Environment & Package Management**
+**Environment & Package Management**  
 Conda • Pip
 
 ---
