@@ -119,7 +119,7 @@ export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
+    - Save the URI: 293736296194.dkr.ecr.eu-north-1.amazonaws.com/kidney_classification
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
@@ -160,8 +160,21 @@ export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
     ECR_REPOSITORY_NAME = simple-app
 
 
+# Azure-CICD-Deployment-with-Github-Actions
 
+## Run from terminal
 
+Server pass - 4HY1Vms3CAFraxYHSUAz7XhKLy4dC95cE86uojTSJTWxEWjvosrpJQQJ99CHAC1i4TkEqg7NAAACAZCR7ZJk
+
+docker build -t mlproject.azurecr.io/mlproject:latest .
+docker login mlproject.azurecr.io
+docker push mlproject.azurecr.io/mlproject:latest
+
+## Deploment Steps:-
+1. Build the Docker image of the source code
+2. Push the Docker image to container Registry
+3. Launch the Web App Server in Azure
+4. Pull the docker image from the container registry to web app server and run
 
 
 ## About MLflow & DVC
