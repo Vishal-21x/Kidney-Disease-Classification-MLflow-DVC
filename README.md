@@ -212,7 +212,7 @@ All metrics monitored via **MLflow Dashboard** for experiment comparison and ana
 
 
 **Machine Learning & Deep Learning**  
-Python • TensorFlow • Keras • NumPy • Pandas • Scikit-learn
+Python • TensorFlow • Keras
 
 **ML Operations & Tracking**  
 MLflow • DVC
