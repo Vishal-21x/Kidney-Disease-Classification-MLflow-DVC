@@ -206,12 +206,37 @@ All metrics monitored via **MLflow Dashboard** for experiment comparison and ana
 9. **Web Interface** - Flask REST API for easy integration
 10. **Industry Best Practices** - Docker, containerization, version control
 
+
+
+## 🛠️ Tech Stack & Skills
+
+<div align="center">
+
+**Machine Learning & Deep Learning**
+Python • TensorFlow • Keras • NumPy • Pandas • Scikit-learn
+
+**ML Operations & Tracking**
+MLflow • DVC
+
+**Web Framework & API**
+Flask • Jupyter
+
+**DevOps & Cloud**
+Docker • GitHub Actions • AWS • AWS EC2 • AWS ECR
+
+**Version Control & Collaboration**
+Git • GitHub
+
+**Environment & Package Management**
+Conda • Pip
+
+</div>
+
 ---
 
 <div align="center">
 
 **A demonstration of professional ML engineering from research to production**
 
-[GitHub Repository](https://github.com/Vishal-21x/Kidney-Disease-Classification-MLflow-DVC)
 
 </div>
