@@ -5,18 +5,19 @@
 <div align="center">
 
 ## ✨ Key Features
-## Project in Action
+
+## 📸 Project in Action
 
 ### Live Product in Action
-![Prediction Interface](.\ProjectImages\Prediction image.png)
+![Prediction Interface](ProjectImages/Prediction_image.png)
 *Flask web app with real-time kidney disease classification on CT scans*
 
 ### Automated Deployment Pipeline
-![GitHub Actions Success](.\ProjectImages\CI_CD pipeline via Github.png)
+![GitHub Actions Success](ProjectImages/CI_CD_pipeline_via_Github.png)
 *Continuous Integration, Delivery, and Deployment - Every push to master auto-deploys to production*
 
 ### ML Pipeline Orchestration
-![DVC Pipeline DAG](.\ProjectImages\DVC Dag.png)
+![DVC Pipeline DAG](ProjectImages/DVC_Dag.png)
 *Reproducible data science workflow - Data Ingestion → Base Model → Training → Evaluation*
 
 
