@@ -1,193 +1,200 @@
-# Kidney-Disease-Classification-MLflow-DVC
+# 🏥 Kidney Disease Classification - MLflow & DVC
+
+**A production-ready deep learning pipeline for classifying kidney CT scan images with automated CI/CD deployment on AWS**
+
+<div align="center">
+
+## ✨ Key Features
+## Project in Action
+
+### Live Product in Action
+![Prediction Interface](.\ProjectImages\Prediction image.png)
+*Flask web app with real-time kidney disease classification on CT scans*
+
+### Automated Deployment Pipeline
+![GitHub Actions Success](.\ProjectImages\CI_CD pipeline via Github.png)
+*Continuous Integration, Delivery, and Deployment - Every push to master auto-deploys to production*
+
+### ML Pipeline Orchestration
+![DVC Pipeline DAG](.\ProjectImages\DVC Dag.png)
+*Reproducible data science workflow - Data Ingestion → Base Model → Training → Evaluation*
 
 
-## Workflows
+</div>
 
-1. Update config.yaml
-2. Update secrets.yaml [Optional]
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components
-7. Update the pipeline 
-8. Update the main.py
-9. Update the dvc.yaml
+---
 
+## 🎯 Overview
 
-# How to run?
-### STEPS:
+This project implements an **end-to-end machine learning pipeline** for kidney disease classification from CT scan images. It demonstrates professional ML engineering with production-grade DevOps, automated deployment, and experiment tracking.
 
-Clone the repository
+**Classifies 4 kidney conditions:**
+- 🔴 **Tumor** - Malignant kidney tumors
+- 🟡 **Stone** - Kidney stones  
+- 🟢 **Normal** - Healthy kidneys
+- 🔵 **Cyst** - Kidney cysts
 
-```bash
-https://github.com/entbappy/Kidney-Disease-Classification-MLflow-DVC
+---
+
+## ✨ Key Features
+
+### 🤖 Machine Learning
+- Pre-trained **VGG16** model with transfer learning
+- Data augmentation for improved generalization
+- 4-class image classification from CT scans
+- Real-time experiment tracking with MLflow
+
+### 📊 Data & Experiment Management
+- **DVC Pipeline** - Reproducible data processing workflows
+- **Experiment Versioning** - Track parameters, metrics, and models
+- **Data Versioning** - Version control for datasets
+- **Automated Orchestration** - DAG-based pipeline execution
+
+### 🔄 CI/CD & Production Deployment
+- **GitHub Actions** - Automated build, test, and deploy
+- **Docker** - Containerized application for reproducibility
+- **AWS ECR** - Elastic Container Registry for Docker images
+- **AWS EC2** - Auto-deployment on push to master branch
+- **Production Ready** - Self-hosted GitHub Actions runner
+
+### 🌐 Web Application
+- **Flask REST API** - Real-time prediction inference
+- **User-Friendly Interface** - Simple image upload & results
+- **Error Handling** - Robust error management
+
+---
+
+## 🏗️ Architecture
+
+### Machine Learning Pipeline
 ```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
-conda create -n cnncls python=3.8 -y
-```
-
-```bash
-conda activate cnncls
-```
-
-
-### STEP 02- install the requirements
-```bash
-pip install -r requirements.txt
-```
-
-
-```bash
-# Finally run the following command
-python app.py
-```
-
-Now,
-```bash
-open up you local host and port
-```
-
-
-### DVC cmd
-
-1. dvc init
-2. dvc repro
-3. dvc dag
-
-
-## MLflow
-
-[Documentation](https://mlflow.org/docs/latest/index.html)
-
-
-##### cmd
-- mlflow ui
-
-### dagshub
-[dagshub](https://dagshub.com/)
-
-MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/MLflow-DVC-Chicken-Disease-Classification.mlflow 
-MLFLOW_TRACKING_USERNAME=entbappy 
-MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 
-python script.py
-
-Run this to export as env variables:
-
-```bash
-
-export MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/MLflow-DVC-Chicken-Disease-Classification.mlflow
-
-export MLFLOW_TRACKING_USERNAME=entbappy 
-
-export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 
-
+Raw Data → Data Prep → Model Train → Evaluation → Production
+    ↓          ↓           ↓            ↓             ↓
+   DVC        DVC       MLflow       MLflow       Docker
+  Track     Version     Logging     Artifacts     Package
 ```
 
+### CI/CD Deployment Flow
+```
+GitHub Push → GitHub Actions → Docker Build → AWS ECR → EC2 Deploy
+                   ↓               ↓            ↓         ↓
+            Lint & Test      Build Image    Push Image  Run
+                                                        Container
+```
 
-# AWS-CICD-Deployment-with-Github-Actions
+### AWS Production Architecture
+```
+┌─────────────────────────────────────────────────────┐
+│              GitHub Repository                       │
+│          (Code + GitHub Actions Workflow)            │
+└──────────────────────┬──────────────────────────────┘
+                       │ Push to Master
+                       ▼
+        ┌──────────────────────────┐
+        │  GitHub Actions          │
+        │  - Build Docker Image    │
+        │  - Push to ECR           │
+        └──────────────┬───────────┘
+                       │
+                       ▼
+        ┌──────────────────────────┐
+        │  AWS ECR                 │
+        │  Container Registry      │
+        └──────────────┬───────────┘
+                       │
+                       ▼
+        ┌──────────────────────────┐
+        │  AWS EC2 Instance        │
+        │  (Self-hosted Runner)    │
+        │                          │
+        │  - Pull Latest Image     │
+        │  - Stop Old Container    │
+        │  - Run New Container     │
+        │  - Port: 8080            │
+        └──────────────────────────┘
+```
 
-## 1. Login to AWS console.
+---
 
-## 2. Create IAM user for deployment
+## 📁 Project Structure
 
-	#with specific access
+```
+Kidney-Disease-Classification-MLflow-DVC/
+├── .github/workflows/
+│   └── master.yaml                  # CI/CD Pipeline
+├── src/cnnClassifier/
+│   ├── components/                  # ML Components
+│   │   ├── data_ingestion.py
+│   │   ├── prepare_base_model.py
+│   │   ├── model_training.py
+│   │   └── model_evaluation.py
+│   ├── config/
+│   │   └── configuration.py
+│   ├── pipeline/                    # ML Pipeline Stages
+│   │   ├── stage_01_data_ingestion.py
+│   │   ├── stage_02_prepare_base_model.py
+│   │   ├── stage_03_model_training.py
+│   │   └── stage_04_model_evaluation.py
+│   └── utils/
+│       └── common.py
+├── research/                        # Jupyter Notebooks
+│   ├── 01_data_ingestion.ipynb
+│   ├── 02_prepare_base_model.ipynb
+│   ├── 03_model_training.ipynb
+│   └── 04_model_evaluation.ipynb
+├── config/
+│   └── config.yaml                  # Configuration
+├── params.yaml                      # Pipeline Parameters
+├── dvc.yaml                         # DVC Pipeline Definition
+├── Dockerfile                       # Docker Containerization
+├── app.py                           # Flask Web Application
+├── main.py                          # Pipeline Orchestration
+├── requirements.txt                 # Dependencies
+└── setup.py                         # Package Setup
+```
 
-	1. EC2 access : It is virtual machine
+---
 
-	2. ECR: Elastic Container registry to save your docker image in aws
+## 📊 Model Performance
 
+### Training Results
+- **Model**: VGG16 with transfer learning
+- **Dataset**: 2,487 training images, 9,959 validation images
+- **Classes**: 4 (Tumor, Stone, Normal, Cyst)
+- **Image Size**: 224x224x3
+- **Framework**: TensorFlow 2.12
 
-	#Description: About the deployment
+### Metrics Tracked
+- Training Loss & Validation Accuracy
+- Per-class Precision/Recall/F1-Score
+- Training Duration & Resource Usage
+- Model Checkpoints & Best Weights
 
-	1. Build docker image of the source code
+All metrics monitored via **MLflow Dashboard** for experiment comparison and analysis.
 
-	2. Push your docker image to ECR
+---
 
-	3. Launch Your EC2 
+## 📝 Project Highlights
 
-	4. Pull Your image from ECR in EC2
+✨ **What Makes This Project Stand Out:**
 
-	5. Lauch your docker image in EC2
+1. **End-to-End Implementation** - From raw data to production deployment
+2. **Professional DevOps** - CI/CD pipeline with GitHub Actions
+3. **Experiment Management** - MLflow for comprehensive experiment tracking
+4. **Data Versioning** - DVC for reproducible data pipelines
+5. **Scalable Architecture** - Modular, maintainable, production-grade code
+6. **Production Ready** - Error handling, logging, monitoring capabilities
+7. **Cloud Native** - Deployed on AWS EC2 with auto-scaling
+8. **Automated Deployment** - Push → Build → Test → Deploy pipeline
+9. **Web Interface** - Flask REST API for easy integration
+10. **Industry Best Practices** - Docker, containerization, version control
 
-	#Policy:
+---
 
-	1. AmazonEC2ContainerRegistryFullAccess
+<div align="center">
 
-	2. AmazonEC2FullAccess
+**A demonstration of professional ML engineering from research to production**
 
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 293736296194.dkr.ecr.eu-north-1.amazonaws.com/kidney_classification
+[GitHub Repository](https://github.com/Vishal-21x/Kidney-Disease-Classification-MLflow-DVC)
 
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = eu-north-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
-
-
-# Azure-CICD-Deployment-with-Github-Actions
-
-## Run from terminal
-
-Server pass - 4HY1Vms3CAFraxYHSUAz7XhKLy4dC95cE86uojTSJTWxEWjvosrpJQQJ99CHAC1i4TkEqg7NAAACAZCR7ZJk
-
-docker build -t mlproject.azurecr.io/mlproject:latest .
-docker login mlproject.azurecr.io
-docker push mlproject.azurecr.io/mlproject:latest
-
-## Deploment Steps:-
-1. Build the Docker image of the source code
-2. Push the Docker image to container Registry
-3. Launch the Web App Server in Azure
-4. Pull the docker image from the container registry to web app server and run
-
-
-## About MLflow & DVC
-
-MLflow
-
- - Its Production Grade
- - Trace all of your expriements
- - Logging & taging your model
-
-
-DVC 
-
- - Its very lite weight for POC only
- - lite weight expriements tracker
- - It can perform Orchestration (Creating Pipelines)
+</div>
