@@ -9,17 +9,32 @@
 ## 📸 Project in Action
 
 ### Live Product in Action
+
+<div align="center">
+
 ![Prediction Interface](ProjectImages/Prediction_image.png)
+
 *Flask web app with real-time kidney disease classification on CT scans*
 
+</div>
+
 ### Automated Deployment Pipeline
+
+<div align="center">
+
 ![GitHub Actions Success](ProjectImages/CI_CD_pipeline_via_Github.png)
+
 *Continuous Integration, Delivery, and Deployment - Every push to master auto-deploys to production*
 
-### ML Pipeline Orchestration
-![DVC Pipeline DAG](ProjectImages/DVC_Dag.png)
-*Reproducible data science workflow - Data Ingestion → Base Model → Training → Evaluation*
+</div>
 
+### ML Pipeline Orchestration
+
+<div align="center">
+
+![DVC Pipeline DAG](ProjectImages/DVC_Dag.png)
+
+*Reproducible data science workflow - Data Ingestion → Base Model → Training → Evaluation*
 
 </div>
 
