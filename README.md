@@ -210,7 +210,6 @@ All metrics monitored via **MLflow Dashboard** for experiment comparison and ana
 
 ## 🛠️ Tech Stack & Skills
 
-<div align="center">
 
 **Machine Learning & Deep Learning**
 Python • TensorFlow • Keras • NumPy • Pandas • Scikit-learn
@@ -229,8 +228,6 @@ Git • GitHub
 
 **Environment & Package Management**
 Conda • Pip
-
-</div>
 
 ---
 
